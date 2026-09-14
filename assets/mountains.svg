@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="1688" viewBox="0 0 780 1688">
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#182527"/><stop offset=".52" stop-color="#405452"/><stop offset="1" stop-color="#102427"/></linearGradient>
+    <linearGradient id="far" x2="0" y2="1"><stop stop-color="#74817a"/><stop offset="1" stop-color="#354b49"/></linearGradient>
+    <linearGradient id="mid" x2=".2" y2="1"><stop stop-color="#3b5451"/><stop offset="1" stop-color="#152f32"/></linearGradient>
+    <linearGradient id="near" x2=".3" y2="1"><stop stop-color="#243e3d"/><stop offset="1" stop-color="#081c20"/></linearGradient>
+    <filter id="mist"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".55" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".065"/></feComponentTransfer></filter>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h780v1688H0z"/>
+  <circle cx="579" cy="583" r="49" fill="#d4d1b6" opacity=".64"/>
+  <path fill="url(#far)" d="M0 965 43 910 76 922 145 819 190 845 242 794 295 830 354 723 389 734 436 679 470 714 488 707 545 779 586 802 618 775 679 845 740 822 780 869V1688H0Z"/>
+  <path fill="#99a69a" opacity=".16" d="m354 723 35 11 47-55 34 35 18-7 57 72-78-26-21-39-50 53-21-9-59 92-45 1z"/>
+  <path fill="url(#mid)" d="m0 1056 54-77 43 16 55-77 38 9 50-95 25 11 38-49 43 71 19-14 45 80 35-8 89 106 45-13 68 54 50-31 93 46v603H0Z"/>
+  <path fill="#a3b1a7" opacity=".16" filter="url(#mist)" d="M-80 1055Q230 930 487 1030t370-14v87q-205-28-367-21t-570 74Z"/>
+  <path fill="url(#near)" d="m0 1145 67 28 53-70 35 6 39-94 34-16 39-69 41 31 30-20 55 78 30 18 37 91 34-18 58 39 29-11 86 43 46-21 72 26v502H0Z"/>
+  <path fill="#0d2629" d="m780 1160-43-12-41 62-43-9-62 77-40-9-69 51-65-3-81 67-66-17-96 60-70-8L0 1489v199h780Z"/>
+  <path fill="#091e23" d="m0 1401 93 24 72 77 68-15 111 81 84-8 95 52 101-33 156 75v34H0Z"/>
+  <path fill="#fff" filter="url(#grain)" d="M0 0h780v1688H0z"/>
+</svg>
