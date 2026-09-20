@@ -21,8 +21,13 @@
     $('lock-date').textContent = `${month}月${date}日 ${weekday[new Date(year, month - 1, date).getDay()]}`;
     $('suitable').textContent = day.suitable;
     $('avoid').textContent = day.avoid;
-    $('verse').textContent = day.verse;
+    $('verse').replaceChildren(...(day.verse.match(/[^，。；]+[，。；]?/g) || [day.verse]).map(line => {
+      const span = document.createElement('span');
+      span.textContent = line;
+      return span;
+    }));
     $('verse-source').textContent = day.source;
+    $('verse-credit').textContent = day.source;
     $('sample-date').textContent = day.date.slice(5).replace('-', '.');
     $('sample-topic').textContent = day.topic;
     dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
@@ -38,6 +43,7 @@
   $('previous').addEventListener('click', () => select(index - 1));
   $('next').addEventListener('click', () => select(index + 1));
   document.addEventListener('keydown', event => {
+    if (document.querySelector('dialog[open]')) return;
     if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
       event.preventDefault();

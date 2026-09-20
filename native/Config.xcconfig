@@ -1,0 +1,10 @@
+// Set your own reverse-domain identifier before automatic signing.
+BASE_BUNDLE_ID = com.liuzhe.xuanxu.demo
+DEVELOPMENT_TEAM =
+IPHONEOS_DEPLOYMENT_TARGET = 17.0
+SWIFT_VERSION = 5.0
+CODE_SIGN_STYLE = Automatic
+// A Personal Team cannot provision an iOS App Group. Widget actions use the
+// extension's own container until a registered developer team is available.
+RITUAL_APP_GROUP =
+RITUAL_ENTITLEMENTS =

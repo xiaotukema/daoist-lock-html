@@ -8,11 +8,12 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="data/days.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/ritual.js" defer></script>
 </head>
 <body>
   <header class="masthead"><a class="wordmark" href="./" aria-label="玄序首页"><span class="brand-seal">玄</span>玄序<span class="brand-en">XUAN XU</span></a><span class="edition">道教锁屏研究 <span>／</span> 体验版 01</span></header>
   <main>
-    <section class="intro" aria-labelledby="page-title"><p class="eyebrow">一屏清静 · 一日有序</p><h1 id="page-title">让一日，<br>始于清静。</h1><p class="intro-copy">宜忌知时，课诵入心。<br>将道门日常，收在抬眼之间。</p><div class="intro-rule"></div><p class="small-note">两行之间，自有日用。<br><span>道教锁屏 · HTML 仿真体验</span></p></section>
+    <section class="intro" aria-labelledby="page-title"><h1 id="page-title">今日课诵</h1></section>
     <section class="preview" aria-label="iPhone 锁屏预览">
       <div class="phone" id="phone">
         <div class="hardware mute"></div><div class="hardware volume-up"></div><div class="hardware volume-down"></div><div class="hardware power"></div>
@@ -20,8 +21,13 @@
           <div class="wallpaper"></div><div class="screen-shade"></div>
           <div class="status-bar" aria-hidden="true"><span class="status-lock"><svg viewBox="0 0 24 24"><path d="M8 10V7a4 4 0 0 1 8 0v3M7 10h10v9H7z"/></svg></span><div class="island"><span></span></div><div class="status-icons"><svg viewBox="0 0 20 14"><path d="M2 12V9m5 3V6m5 6V3m5 9V1"/></svg><span class="battery"></span></div></div>
           <div class="clock-block"><p id="lock-date">9月14日 星期一</p><div class="time" aria-label="演示时间 9 点 41 分">09:41</div></div>
-          <div class="widget-wrap" id="widget-wrap"><div class="widget" aria-live="polite" aria-atomic="true"><p class="almanac"><span class="yi">宜</span><span id="suitable">焚香 · 洒扫</span><span class="divider"></span><span class="ji">忌</span><span id="avoid">喧哗 · 争讼</span></p><p class="scripture"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M6 6l12 12M6 18 18 6"/><circle cx="12" cy="12" r="6"/></svg><span id="verse">常能遣其欲，而心自静。</span></p></div></div>
+          <div class="widget-wrap" id="widget-wrap"><div class="widget" aria-live="polite" aria-atomic="true"><p class="almanac"><span class="yi">宜</span><span id="suitable">焚香 · 洒扫</span><span class="divider"></span><span class="ji">忌</span><span id="avoid">喧哗 · 争讼</span></p><p class="scripture"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M6 6l12 12M6 18 18 6"/><circle cx="12" cy="12" r="6"/></svg><span id="verse">常能遣其欲，而心自静。</span></p><p class="verse-credit" id="verse-credit">《太上老君说常清静经》</p></div></div>
           <div class="wallpaper-caption" aria-hidden="true"><span>清</span><span>静</span><i></i></div>
+          <section class="daily-ritual" aria-label="每日仪式">
+            <p class="ritual-eyebrow">今 日 · 留 一 刻 给 自 己</p>
+            <div class="ritual-entries"><button id="open-fortune"><span class="ritual-symbol">签</span><span>每日抽签<small id="fortune-state">静心 · 求一签</small></span></button><button id="open-incense"><span class="ritual-symbol">香</span><span>每日上香<small id="incense-state">一炷 · 寄心愿</small></span></button></div>
+            <p id="daily-progress" class="daily-progress"></p>
+          </section>
           <p class="phone-feedback" id="phone-feedback" role="status"></p>
           <div class="quick-actions"><button class="quick-button" id="flashlight" aria-label="切换手电筒光效" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M8 3h8v4l-2 3v10h-4V10L8 7zM8 6h8M11 13h2"/></svg></button><button class="quick-button" id="camera" aria-label="显示相机演示提示"><svg viewBox="0 0 24 24"><path d="M4 7h4l2-3h4l2 3h4v13H4z"/><circle cx="12" cy="13" r="4"/></svg></button></div><div class="home-indicator" aria-hidden="true"></div>
         </div>
@@ -29,8 +35,26 @@
       <div class="date-controls" aria-label="切换样本日期"><button id="previous" aria-label="上一天"><svg viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></svg></button><div><span id="sample-date">09.14</span><span class="control-divider">/</span><span id="sample-topic">日用 · 清静</span></div><button id="next" aria-label="下一天"><svg viewBox="0 0 24 24"><path d="m10 6 6 6-6 6"/></svg></button></div>
       <div class="pagination" id="pagination" aria-label="选择样本日期"></div><p class="gesture-hint">左右轻滑，翻阅一日 <span>↔</span></p>
     </section>
-    <aside class="annotation"><span class="annotation-number">01 — 07</span><h2>只留一句。<br>恰好两行。</h2><p>上行宜忌，下行课诵。<br>不添纷扰，不占心神。</p><div class="source-note"><span class="tiny-label">本日课诵出处</span><p id="verse-source">《太上老君说常清静经》</p><span class="source-detail">节录原文 · 静心默读</span></div><span class="sample-tag"><i></i> 七日静态样本</span></aside>
+    <aside class="annotation"><span class="annotation-number">01 — 07</span><h2>每日一诵。<br>一签一炷。</h2><div class="source-note"><span class="tiny-label">出处</span><p id="verse-source">《太上老君说常清静经》</p></div></aside>
   </main>
-  <footer><span>玄序 <span class="footer-dot">·</span> 清静为本，日用为常</span><p>宜忌为设计样本，非真实黄历 <span>·</span> 暂不接入 WidgetKit</p><span class="footer-en">A QUIET MOMENT, DAILY.</span></footer>
+  <dialog id="ritual-dialog" aria-labelledby="ritual-title">
+    <div class="ritual-sheet">
+      <button class="ritual-close" id="close-ritual" aria-label="关闭仪式">×</button>
+      <p class="sheet-kicker" id="ritual-date"></p>
+      <h2 id="ritual-title">静心，求一签。</h2>
+      <p class="ritual-subtitle" id="ritual-subtitle"></p>
+      <div class="ritual-art" id="ritual-art">
+        <div class="fortune-art" aria-hidden="true"><div class="sticks"><i></i><i></i><i></i><i></i><i></i></div><div class="fortune-cup"><span>玄<br>序</span></div></div>
+        <div class="incense-art" aria-hidden="true"><div class="smoke"><i></i><i></i><i></i></div><div class="incense-stick"></div><div class="incense-bowl"><span>静</span></div><div class="incense-ripple"></div></div>
+        <button id="place-incense" class="incense-touch" aria-label="将香插入香炉" hidden></button>
+      </div>
+      <div id="fortune-result" class="fortune-result" hidden><p id="fortune-number"></p><h3 id="fortune-title"></h3><p id="fortune-poem"></p><div class="fortune-reading"><span>今日一念</span><p id="fortune-reading"></p></div></div>
+      <p id="ritual-message" class="ritual-message" role="status" aria-live="polite"></p>
+      <button class="ritual-primary" id="ritual-action">静心抽签</button>
+      <button class="ritual-replay" id="replay-incense" hidden>再体验一次插香</button>
+      <p id="storage-note" class="storage-note" role="status"></p>
+    </div>
+  </dialog>
+  <footer><span>玄序 <span class="footer-dot">·</span> 清静为本，日用为常</span><span class="footer-en">A QUIET MOMENT, DAILY.</span></footer>
 </body>
 </html>

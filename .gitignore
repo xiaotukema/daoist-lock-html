@@ -1,0 +1,5 @@
+.DS_Store
+native/build/
+DerivedData/
+*.xcuserstate
+native/build*/

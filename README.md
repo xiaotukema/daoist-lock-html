@@ -1,60 +1,47 @@
-# 玄序 · 道教锁屏 HTML 仿真体验版
+# 玄序 · 原生 iOS App + Widget Extension
 
-纯 HTML / CSS / JavaScript 的 iPhone 锁屏展示。石墨色机身、深色山景壁纸、浅色文字；核心小组件只有两行：上行「宜 / 忌」，下行一句课诵。没有账号、功课表、开坛或多 Tab App 导航。
+玄序是一款原生 SwiftUI iPhone App，并配套 WidgetKit 桌面与锁屏组件。它保留每日课诵、每日抽签、每日上香和宜忌四个入口，适合在手机主屏或锁屏上完成短暂的每日仪式。仓库根目录仍保留一份 HTML 预览，便于快速查看视觉稿；原生工程位于 `native/`。
 
-## 本地打开
+## 原生工程
 
-直接双击仓库根目录的 `index.html`，用现代浏览器打开即可。不需安装依赖，不需构建，所有字体使用系统字体，壁纸与数据均在本地。数据用普通脚本加载，没有 `fetch` 或 ES Module，因此支持 `file://`。
+用 Xcode 打开 [native/XuanXu.xcodeproj](native/XuanXu.xcodeproj)，运行 `XuanXu` scheme。工程包含：
 
-也可在仓库目录运行：
+- `XuanXu`：SwiftUI 主 App，负责课诵、宜忌和仪式浮层。
+- `XuanXuWidget`：WidgetKit Extension，支持桌面小组件和锁屏组件，并可直接触发抽签、上香动画。
+- `native/XuanXu/Assets.xcassets`：玄序 App icon。
+- `native/XuanXu/Shared/almanac-2026.json`：随安装包携带的 2026 年每日宜忌资源。
+
+### 每日内容规则
+
+- 日期来自设备当前时区的本地日期，跨日后自动切换。
+- 课诵从本地道家经典金句中按日期稳定随机抽取，同一天在 App 和 Widget 中保持一致。
+- 抽签由用户触发，每天首次抽签后保存签文，之后显示当天结果。
+- 宜、忌从安装包内的每日数据表按日期读取；没有对应年份资源时使用内置兜底文案。
+
+宜忌数据整理自 [xuqssq/calendar](https://github.com/xuqssq/calendar) 的公开月度 JSON，并随本项目本地化保存；该数据属于传统日历内容，不构成现实决策建议。
+
+## HTML 预览
+
+直接双击根目录的 `index.html`，或在仓库目录运行：
 
 ```bash
 python3 -m http.server 8000
 ```
 
-浏览器访问 `http://localhost:8000`。
+然后访问 `http://localhost:8000`。预览版用于查看锁屏视觉、浮层和动效，不代表系统 Widget 的运行环境。
 
-## 体验方式
-
-- 点击机身下方的左右箭头，循环切换七天样本。
-- 在锁屏内左右滑动，或按键盘左右方向键切换。
-- 点击七个圆点，直接选取日期。
-- 小组件切换有淡出 / 淡入效果；跟随系统「减少动态效果」设置关闭过渡。
-- 手电筒按钮切换屏幕光效；相机按钮仅显示演示提示，不访问设备相机。
-
-日期使用 2026 年 9 月 14 日至 20 日的固定样本，时间固定为 09:41，便于比较排版。**宜忌为黄历口吻的设计样本，并非这些日期的真实黄历、择日建议或宗教仪轨。** 课诵文字节录自《太上老君说常清静经》，标点为展示排版所用。当前七日围绕日用、清静、诵经等题材，不含励志鸡汤。
-
-## 文件结构
+## 目录结构
 
 ```text
-index.html             页面结构与锁屏
-css/style.css          机身、深色锁屏、响应式排版与过渡
-js/main.js             日期切换、滑动、键盘和快捷键光效
-data/days.js          七日本地样本（普通脚本）
-assets/mountains.svg   本地绘制的层叠山景壁纸
-README.md              使用说明与验收记录
-PLAN.md                仓库原有计划，未修改
+native/                 原生 iOS App + Widget Extension
+index.html              HTML 视觉预览
+css/ js/ data/ assets/  HTML 预览资源
+scripts/                本地预览辅助脚本
 ```
 
-修改 `data/days.js` 可替换或增加样本；圆点数量会自动随数据生成。每条记录含 ISO 日期、题材、宜、忌和课诵，统一添加经文出处。建议维持宜忌各四字、课诵约 10–16 字，以保留两行密度；采用其他经典时需同步调整每条出处。
+## 当前验证
 
-## 后续用 GitHub Pages 预览
-
-1. 将这些静态文件提交并推送到 GitHub 仓库，确保 `index.html` 在根目录。
-2. 在仓库 `Settings → Pages` 选择从分支部署（`Deploy from a branch`）。
-3. 选择实际存放页面的分支（如 `main`），目录选择 `/ (root)`，保存。
-4. 等待部署完成，打开 Pages 页面给出的预览地址。项目仓库通常为 `https://<用户名>.github.io/<仓库名>/`。
-
-所有资源使用相对路径，可部署在项目子路径。本次只完成仓库内实现，尚未发布 GitHub Pages。
-
-## 验收与边界
-
-- [x] 首屏居中 iPhone 外框与锁屏；包含机身侧键、动态岛、时间、快捷键和底部指示条。
-- [x] 主小组件严格两行：「宜 / 忌」与一句课诵。
-- [x] 七天本地样本，全部为日用宜忌与道教经文，无鸡汤文案。
-- [x] 按钮、圆点、左右滑动、方向键切换；循环切换并带轻过渡。
-- [x] 深壁纸、浅文字，提供桌面与窄屏 CSS 布局及减少动态效果适配。
-- [x] 无构建依赖、无外部资源请求；已提供本地与 Pages 操作说明。
-- [x] 暂不接原生 WidgetKit，也不替换系统锁屏。
-
-自检：JavaScript 语法检查、七日数据完整性、日期循环、圆点选择、键盘与滑动事件、快捷键状态、减少动态效果分支、静态资源引用均通过。交互检查使用 Node 的模拟 DOM 执行脚本。当前环境 Chromium 启动被沙箱限制，未完成真实浏览器截图和真机触控验收；响应式视觉效果仍需在实际浏览器复核。未完成项：真实浏览器 / 真机视觉验收；GitHub Pages 发布与原生 WidgetKit 均不属于本次实现范围。
+- 已配置 AppIcon 资源并加入原生 App target。
+- 已将每日宜忌 JSON 同时加入 App 与 Widget target，供两端读取。
+- Xcode 中可选择真实 iPhone 运行 `XuanXu` scheme；Widget 需要安装 App 后在系统组件编辑器中添加。
+- GitHub Pages 只适用于根目录 HTML 预览；原生 App 与 Widget 通过 Xcode 构建和安装。

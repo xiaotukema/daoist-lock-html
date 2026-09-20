@@ -1,0 +1,379 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1B2C3D4E5F60718293A4B5C /* XuanXu/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5D /* XuanXu/Assets.xcassets */; };
+		A1B2C3D4E5F60718293A4B5E /* XuanXu/Shared/almanac-2026.json in App Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5F /* XuanXu/Shared/almanac-2026.json */; };
+		A1B2C3D4E5F60718293A4B60 /* XuanXu/Shared/almanac-2026.json in Widget Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5F /* XuanXu/Shared/almanac-2026.json */; };
+		0D043BC8C0A027ABDA455643 /* XuanXu/Shared/DailyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0380D5F8166983F769CCABC /* XuanXu/Shared/DailyContent.swift */; };
+		0D043BC8C0A027ABDA455644 /* XuanXu/Shared/RitualIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0380D5F8166983F769CCABD /* XuanXu/Shared/RitualIntents.swift */; };
+		10FB8132F5643F7E766C172D /* XuanXu/Shared/DailyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0380D5F8166983F769CCABC /* XuanXu/Shared/DailyContent.swift */; };
+		10FB8132F5643F7E766C172E /* XuanXu/Shared/RitualIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0380D5F8166983F769CCABD /* XuanXu/Shared/RitualIntents.swift */; };
+		4E18AE55B5D110B2CCADF38B /* XuanXu/Widget/XuanXuWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFC644E4BF7862DBDCB2929 /* XuanXu/Widget/XuanXuWidget.swift */; };
+		86ACBF6B85CA8251848E5D22 /* XuanXu/App/ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73D05647530925A84EFB9D4 /* XuanXu/App/ContentView.swift */; };
+		B5F235D5B8CC63C82183E49E /* XuanXuWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F231F6FE549E641636571AA6 /* XuanXuWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EDD10C40DC378CD2B9E0DB36 /* XuanXu/App/XuanXuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F8871B9B8E104440FE208 /* XuanXu/App/XuanXuApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D799BAE6088A90139B415FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7B1534CA4012EC58954905D;
+			remoteInfo = XuanXuWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CFFF27C96089B93150F3553B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B5F235D5B8CC63C82183E49E /* XuanXuWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A1B2C3D4E5F60718293A4B5D /* XuanXu/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = XuanXu/Assets.xcassets; sourceTree = "<group>"; };
+		A1B2C3D4E5F60718293A4B5F /* XuanXu/Shared/almanac-2026.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = XuanXu/Shared/almanac-2026.json; sourceTree = "<group>"; };
+		174E92D1A3008C1ADFBAF2AF /* XuanXu/App/Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = XuanXu/App/Info.plist; sourceTree = "<group>"; };
+		210F8871B9B8E104440FE208 /* XuanXu/App/XuanXuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XuanXu/App/XuanXuApp.swift; sourceTree = "<group>"; };
+		72B1E145FF31C363E2C55051 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		8BCD5BC4CDFDF0918087C782 /* XuanXu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = XuanXu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BCD9DCA59749F348774E378 /* XuanXu/Widget/Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = XuanXu/Widget/Info.plist; sourceTree = "<group>"; };
+		B72D06D39B15FBEDE25692A5 /* XuanXu/Shared/Shared.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = XuanXu/Shared/Shared.entitlements; sourceTree = "<group>"; };
+		CBFC644E4BF7862DBDCB2929 /* XuanXu/Widget/XuanXuWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XuanXu/Widget/XuanXuWidget.swift; sourceTree = "<group>"; };
+		E0380D5F8166983F769CCABC /* XuanXu/Shared/DailyContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XuanXu/Shared/DailyContent.swift; sourceTree = "<group>"; };
+		E0380D5F8166983F769CCABD /* XuanXu/Shared/RitualIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XuanXu/Shared/RitualIntents.swift; sourceTree = "<group>"; };
+		F231F6FE549E641636571AA6 /* XuanXuWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; path = XuanXuWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F73D05647530925A84EFB9D4 /* XuanXu/App/ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XuanXu/App/ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		97E1F6EA2057F8371DB451DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFA390DBB86DCB4BC13B8193 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B28B7AF69320201D1CF206EB = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F60718293A4B5D /* XuanXu/Assets.xcassets */,
+				A1B2C3D4E5F60718293A4B5F /* XuanXu/Shared/almanac-2026.json */,
+				E0380D5F8166983F769CCABC /* XuanXu/Shared/DailyContent.swift */,
+				E0380D5F8166983F769CCABD /* XuanXu/Shared/RitualIntents.swift */,
+				210F8871B9B8E104440FE208 /* XuanXu/App/XuanXuApp.swift */,
+				F73D05647530925A84EFB9D4 /* XuanXu/App/ContentView.swift */,
+				CBFC644E4BF7862DBDCB2929 /* XuanXu/Widget/XuanXuWidget.swift */,
+				72B1E145FF31C363E2C55051 /* Config.xcconfig */,
+				174E92D1A3008C1ADFBAF2AF /* XuanXu/App/Info.plist */,
+				9BCD9DCA59749F348774E378 /* XuanXu/Widget/Info.plist */,
+				B72D06D39B15FBEDE25692A5 /* XuanXu/Shared/Shared.entitlements */,
+				FBDC4F23F93125BBEEAE800C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FBDC4F23F93125BBEEAE800C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8BCD5BC4CDFDF0918087C782 /* XuanXu.app */,
+				F231F6FE549E641636571AA6 /* XuanXuWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		35D29683865DDAC16B32E94B /* XuanXu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77461A2F8695601D88760F45 /* Build configuration list for PBXNativeTarget "XuanXu" */;
+			buildPhases = (
+				F81EFF8A641F6C69CA97C584 /* Sources */,
+				97E1F6EA2057F8371DB451DF /* Frameworks */,
+				9486C2D5AA7882CD4204CFF4 /* Resources */,
+				CFFF27C96089B93150F3553B /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE58E2B17C19600779694943 /* PBXTargetDependency */,
+			);
+			name = XuanXu;
+			productName = XuanXu;
+			productReference = 8BCD5BC4CDFDF0918087C782 /* XuanXu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D7B1534CA4012EC58954905D /* XuanXuWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBE7FAEE1F3A318D9FB9E4C6 /* Build configuration list for PBXNativeTarget "XuanXuWidget" */;
+			buildPhases = (
+				C936A156335960FF2FE7D577 /* Sources */,
+				FFA390DBB86DCB4BC13B8193 /* Frameworks */,
+				E48C47977B89754FCD3899B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XuanXuWidget;
+			productName = XuanXuWidget;
+			productReference = F231F6FE549E641636571AA6 /* XuanXuWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98F54143AB4E86B28C3AFEE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = F8C70E4123C9AE82C42562CC /* Build configuration list for PBXProject "XuanXu" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = zh_CN;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				zh_CN,
+				en,
+				Base,
+			);
+			mainGroup = B28B7AF69320201D1CF206EB;
+			productRefGroup = FBDC4F23F93125BBEEAE800C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				35D29683865DDAC16B32E94B /* XuanXu */,
+				D7B1534CA4012EC58954905D /* XuanXuWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9486C2D5AA7882CD4204CFF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D4E5F60718293A4B5C /* XuanXu/Assets.xcassets in Resources */,
+				A1B2C3D4E5F60718293A4B5E /* XuanXu/Shared/almanac-2026.json in App Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E48C47977B89754FCD3899B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D4E5F60718293A4B60 /* XuanXu/Shared/almanac-2026.json in Widget Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C936A156335960FF2FE7D577 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E18AE55B5D110B2CCADF38B /* XuanXu/Widget/XuanXuWidget.swift in Sources */,
+				0D043BC8C0A027ABDA455643 /* XuanXu/Shared/DailyContent.swift in Sources */,
+				0D043BC8C0A027ABDA455644 /* XuanXu/Shared/RitualIntents.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F81EFF8A641F6C69CA97C584 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDD10C40DC378CD2B9E0DB36 /* XuanXu/App/XuanXuApp.swift in Sources */,
+				86ACBF6B85CA8251848E5D22 /* XuanXu/App/ContentView.swift in Sources */,
+				10FB8132F5643F7E766C172D /* XuanXu/Shared/DailyContent.swift in Sources */,
+				10FB8132F5643F7E766C172E /* XuanXu/Shared/RitualIntents.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DE58E2B17C19600779694943 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7B1534CA4012EC58954905D /* XuanXuWidget */;
+			targetProxy = D799BAE6088A90139B415FCC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		89E1FD6268CC0F221A2BE178 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72B1E145FF31C363E2C55051 /* Config.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		941C910EEC48445D23A854AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72B1E145FF31C363E2C55051 /* Config.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(RITUAL_ENTITLEMENTS)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = D4697F6UA9;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = XuanXu/Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BASE_BUNDLE_ID).widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		97A30190E49003438EB3D961 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72B1E145FF31C363E2C55051 /* Config.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(RITUAL_ENTITLEMENTS)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = D4697F6UA9;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = XuanXu/Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BASE_BUNDLE_ID).widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		C492B087DDB72F922BB282EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72B1E145FF31C363E2C55051 /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "$(RITUAL_ENTITLEMENTS)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = D4697F6UA9;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = XuanXu/App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BASE_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D140520DF9A71248CAC20830 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72B1E145FF31C363E2C55051 /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "$(RITUAL_ENTITLEMENTS)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = D4697F6UA9;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = XuanXu/App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BASE_BUNDLE_ID)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		E6DE6C99132752C914FEF632 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72B1E145FF31C363E2C55051 /* Config.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		77461A2F8695601D88760F45 /* Build configuration list for PBXNativeTarget "XuanXu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C492B087DDB72F922BB282EC /* Debug */,
+				D140520DF9A71248CAC20830 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8C70E4123C9AE82C42562CC /* Build configuration list for PBXProject "XuanXu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89E1FD6268CC0F221A2BE178 /* Debug */,
+				E6DE6C99132752C914FEF632 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBE7FAEE1F3A318D9FB9E4C6 /* Build configuration list for PBXNativeTarget "XuanXuWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				941C910EEC48445D23A854AF /* Debug */,
+				97A30190E49003438EB3D961 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+}
