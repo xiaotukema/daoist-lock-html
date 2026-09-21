@@ -318,15 +318,24 @@ private struct FortuneScene: View {
     let shaking: Bool
     let reduceMotion: Bool
     @State private var wiggle = false
+    @State private var revealed = false
+    @State private var revealTask: Task<Void, Never>?
 
     var body: some View {
         ZStack(alignment: .bottom) {
             ForEach(0..<5) { index in
+                let drawn = revealed && index == 2
                 RoundedRectangle(cornerRadius: 3)
                     .fill(LinearGradient(colors: [Color(red: 0.73, green: 0.64, blue: 0.46), Color(red: 0.88, green: 0.79, blue: 0.58)], startPoint: .leading, endPoint: .trailing))
                     .frame(width: 9, height: 93 + CGFloat(index % 2) * 12)
-                    .rotationEffect(.degrees(shaking && !reduceMotion && wiggle ? 10 + Double(index - 2) * 3 : Double(index - 2) * 3), anchor: .bottom)
-                    .offset(x: CGFloat(index - 2) * 12, y: shaking && !reduceMotion && wiggle ? 7 : 0)
+                    .overlay(alignment: .top) {
+                        if drawn {
+                            Circle().fill(Color(red: 0.92, green: 0.67, blue: 0.28)).frame(width: 12, height: 12).blur(radius: 1)
+                        }
+                    }
+                    .rotationEffect(.degrees(drawn ? -5 : (shaking && !reduceMotion && wiggle ? 10 + Double(index - 2) * 3 : Double(index - 2) * 3)), anchor: .bottom)
+                    .offset(x: CGFloat(index - 2) * 12, y: drawn ? -74 : (shaking && !reduceMotion && wiggle ? 7 : 0))
+                    .zIndex(drawn ? 2 : 0)
             }
             RoundedRectangle(cornerRadius: 8)
                 .fill(LinearGradient(colors: [Color(red: 0.39, green: 0.29, blue: 0.19), Color(red: 0.63, green: 0.49, blue: 0.31), Color(red: 0.34, green: 0.25, blue: 0.17)], startPoint: .leading, endPoint: .trailing))
@@ -334,14 +343,32 @@ private struct FortuneScene: View {
                 .overlay { Text("玄\n序").font(.system(size: 19, design: .serif)).multilineTextAlignment(.center).foregroundStyle(Color(red: 0.88, green: 0.80, blue: 0.62)) }
                 .overlay(alignment: .top) { Capsule().fill(Color(red: 0.28, green: 0.21, blue: 0.14)).frame(width: 122, height: 7).offset(y: -2) }
                 .offset(y: 48)
+            Text("出签")
+                .font(.system(size: 12, weight: .medium, design: .serif))
+                .foregroundStyle(Color(red: 0.91, green: 0.72, blue: 0.39))
+                .opacity(revealed ? 1 : 0)
+                .offset(y: -86)
         }
         .animation(.easeInOut(duration: reduceMotion ? 0 : 0.18).repeatForever(autoreverses: true), value: wiggle)
-        .onAppear { if shaking && !reduceMotion { wiggle = true } }
+        .onAppear { startSequence(active: shaking) }
         .onChange(of: shaking) { _, active in
-            if active && !reduceMotion { wiggle = true }
-            else { wiggle = false }
+            startSequence(active: active)
         }
+        .onDisappear { revealTask?.cancel() }
         .accessibilityHidden(true)
+    }
+
+    private func startSequence(active: Bool) {
+        revealTask?.cancel()
+        revealed = false
+        wiggle = active && !reduceMotion
+        if active && reduceMotion { revealed = true; return }
+        guard active else { return }
+        revealTask = Task { @MainActor in
+            do { try await Task.sleep(for: .milliseconds(850)) } catch { return }
+            guard !Task.isCancelled else { return }
+            withAnimation(.spring(response: 0.55, dampingFraction: 0.72)) { revealed = true }
+        }
     }
 }
 
