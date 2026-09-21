@@ -2,13 +2,15 @@ import SwiftUI
 import WidgetKit
 
 struct DailyEntry: TimelineEntry {
+    static let animationDuration: TimeInterval = 4.0
+    static let resultDuration: TimeInterval = 1.6
     let date: Date
     let record: DailyRecord
     let shared: Bool
 
     var animationProgress: Double {
         guard let started = record.animationDate, record.animation != nil else { return 1 }
-        return min(max(date.timeIntervalSince(started) / 1.8, 0), 1)
+        return min(max(date.timeIntervalSince(started) / Self.animationDuration, 0), 1)
     }
 
     var animationElapsed: TimeInterval {
@@ -17,11 +19,11 @@ struct DailyEntry: TimelineEntry {
     }
 
     var isAnimating: Bool {
-        record.animation != nil && animationElapsed < 1.8
+        record.animation != nil && animationElapsed < Self.animationDuration
     }
 
     var isShowingResult: Bool {
-        record.animation != nil && animationElapsed >= 1.8 && animationElapsed < 2.8
+        record.animation != nil && animationElapsed >= Self.animationDuration && animationElapsed < Self.animationDuration + Self.resultDuration
     }
 }
 
@@ -44,10 +46,11 @@ struct DailyProvider: TimelineProvider {
         // A widget interaction gets a short sequence of entries so WidgetKit
         // can animate the ritual in place instead of jumping straight to the
         // completed state. The animation itself stays within WidgetKit's
-        // roughly two-second update window, followed by a brief result frame.
+        // A longer window gives WidgetKit time to deliver the interactive update
+        // on a real device before the result frame takes over.
         let current = RitualStorage.read(widget: true)
-        if let started = current.animationDate, started.addingTimeInterval(2.8) > now {
-            dates.append(contentsOf: stride(from: 0.0, through: 2.8, by: 0.2).map {
+        if let started = current.animationDate, started.addingTimeInterval(DailyEntry.animationDuration + DailyEntry.resultDuration) > now {
+            dates.append(contentsOf: stride(from: 0.0, through: DailyEntry.animationDuration + DailyEntry.resultDuration, by: 0.2).map {
                 now.addingTimeInterval($0)
             })
         }
