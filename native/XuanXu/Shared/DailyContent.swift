@@ -72,18 +72,37 @@ enum DailyContent {
         return readings[stableIndex(for: dayKey(date), count: readings.count)]
     }
     static func almanac(on date: Date) -> Almanac {
-        if let entry = bundledAlmanac[dayKey(date)] { return entry }
+        if let entry = bundledAlmanac[dayKey(date)] {
+            return Almanac(
+                yi: capped(entry.yi, key: dayKey(date), salt: "yi"),
+                ji: capped(entry.ji, key: dayKey(date), salt: "ji")
+            )
+        }
         return almanacs[stableIndex(for: dayKey(date), count: almanacs.count)]
     }
 
-    private static func stableIndex(for key: String, count: Int) -> Int {
-        guard count > 0 else { return 0 }
+    private static func capped(_ value: String, key: String, salt: String) -> String {
+        let items = value.components(separatedBy: " · ").filter { !$0.isEmpty }
+        guard items.count > 4 else { return value }
+        return items.enumerated()
+            .sorted { stableHash("\(key)-\(salt)-\($0.offset)") < stableHash("\(key)-\(salt)-\($1.offset)") }
+            .prefix(4)
+            .map(\.element)
+            .joined(separator: " · ")
+    }
+
+    private static func stableHash(_ key: String) -> UInt64 {
         var hash: UInt64 = 1469598103934665603
         for byte in key.utf8 {
             hash ^= UInt64(byte)
             hash &*= 1099511628211
         }
-        return Int(hash % UInt64(count))
+        return hash
+    }
+
+    private static func stableIndex(for key: String, count: Int) -> Int {
+        guard count > 0 else { return 0 }
+        return Int(stableHash(key) % UInt64(count))
     }
 }
 
