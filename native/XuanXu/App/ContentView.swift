@@ -310,18 +310,16 @@ private struct RitualView: View {
 private struct FortuneScene: View {
     let shaking: Bool
     let reduceMotion: Bool
+    @State private var wiggle = false
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            TimelineView(.animation(minimumInterval: 0.08, paused: reduceMotion || !shaking)) { context in
-                let phase = reduceMotion ? 0.5 : context.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 0.9) / 0.9
-                ForEach(0..<5) { index in
-                    RoundedRectangle(cornerRadius: 3)
-                        .fill(LinearGradient(colors: [Color(red: 0.73, green: 0.64, blue: 0.46), Color(red: 0.88, green: 0.79, blue: 0.58)], startPoint: .leading, endPoint: .trailing))
-                        .frame(width: 9, height: 93 + CGFloat(index % 2) * 12)
-                        .rotationEffect(.degrees(shaking ? sin(phase * .pi * 2 + Double(index)) * 10 + Double(index - 2) * 3 : Double(index - 2) * 3), anchor: .bottom)
-                        .offset(x: CGFloat(index - 2) * 12, y: shaking ? sin(phase * .pi * 2 + Double(index)) * 7 : 0)
-                }
+            ForEach(0..<5) { index in
+                RoundedRectangle(cornerRadius: 3)
+                    .fill(LinearGradient(colors: [Color(red: 0.73, green: 0.64, blue: 0.46), Color(red: 0.88, green: 0.79, blue: 0.58)], startPoint: .leading, endPoint: .trailing))
+                    .frame(width: 9, height: 93 + CGFloat(index % 2) * 12)
+                    .rotationEffect(.degrees(shaking && !reduceMotion && wiggle ? 10 + Double(index - 2) * 3 : Double(index - 2) * 3), anchor: .bottom)
+                    .offset(x: CGFloat(index - 2) * 12, y: shaking && !reduceMotion && wiggle ? 7 : 0)
             }
             RoundedRectangle(cornerRadius: 8)
                 .fill(LinearGradient(colors: [Color(red: 0.39, green: 0.29, blue: 0.19), Color(red: 0.63, green: 0.49, blue: 0.31), Color(red: 0.34, green: 0.25, blue: 0.17)], startPoint: .leading, endPoint: .trailing))
@@ -330,7 +328,12 @@ private struct FortuneScene: View {
                 .overlay(alignment: .top) { Capsule().fill(Color(red: 0.28, green: 0.21, blue: 0.14)).frame(width: 122, height: 7).offset(y: -2) }
                 .offset(y: 48)
         }
-        .animation(.easeInOut(duration: reduceMotion ? 0 : 0.25), value: shaking)
+        .animation(.easeInOut(duration: reduceMotion ? 0 : 0.18).repeatForever(autoreverses: true), value: wiggle)
+        .onAppear { if shaking && !reduceMotion { wiggle = true } }
+        .onChange(of: shaking) { _, active in
+            if active && !reduceMotion { wiggle = true }
+            else { wiggle = false }
+        }
         .accessibilityHidden(true)
     }
 }
@@ -339,16 +342,14 @@ private struct IncenseScene: View {
     let inserted: Bool
     let smoking: Bool
     let reduceMotion: Bool
+    @State private var smokePhase = false
     var body: some View {
         ZStack {
             if smoking {
-                TimelineView(.animation(minimumInterval: 0.08, paused: reduceMotion)) { context in
-                    let phase = reduceMotion ? 0.5 : context.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: 3) / 3
-                    ForEach(0..<3) { i in
-                        Capsule().fill(.gray.opacity(0.18)).frame(width: 4, height: 50).blur(radius: 4)
-                            .rotationEffect(.degrees(Double(i * 12) - 12))
-                            .offset(x: sin(phase * .pi * 2 + Double(i)) * 9, y: -96 - phase * 25)
-                    }
+                ForEach(0..<3) { i in
+                    Capsule().fill(.gray.opacity(0.18)).frame(width: 4, height: 50).blur(radius: 4)
+                        .rotationEffect(.degrees(Double(i * 12) - 12))
+                        .offset(x: smokePhase && !reduceMotion ? CGFloat(i - 1) * 8 : CGFloat(i - 1) * -4, y: smokePhase && !reduceMotion ? -121 : -96)
                 }
             }
             Rectangle().fill(LinearGradient(colors: [Color(red: 0.38, green: 0.31, blue: 0.24), Color(red: 0.64, green: 0.42, blue: 0.27)], startPoint: .top, endPoint: .bottom))
@@ -366,6 +367,12 @@ private struct IncenseScene: View {
                 .frame(width: 100, height: 45).overlay { Text("静").font(.system(.title3, design: .serif)).foregroundStyle(.white.opacity(0.7)) }.offset(y: 88)
         }
         .animation(.easeInOut(duration: reduceMotion ? 0 : 0.35), value: inserted)
+        .animation(.easeInOut(duration: reduceMotion ? 0 : 1.2).repeatForever(autoreverses: true), value: smokePhase)
+        .onAppear { if smoking && !reduceMotion { smokePhase = true } }
+        .onChange(of: smoking) { _, active in
+            if active && !reduceMotion { smokePhase = true }
+            else { smokePhase = false }
+        }
         .accessibilityHidden(true)
     }
 }
