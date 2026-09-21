@@ -237,6 +237,11 @@ private struct RitualView: View {
                         .buttonStyle(.plain)
                         .disabled(busy || offered)
                         .accessibilityLabel("将香插入香炉")
+                    } else if busy || replay || model.record.fortune == nil {
+                        FortuneScene(shaking: busy, reduceMotion: reduceMotion)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 238)
+                            .background(fortuneSurface.opacity(colorScheme == .dark ? 0.55 : 0.70), in: RoundedRectangle(cornerRadius: 20))
                     } else if let index = model.record.fortune {
                         let fortune = DailyContent.fortunes[index]
                         VStack(spacing: 16) {
@@ -258,8 +263,10 @@ private struct RitualView: View {
                     }
 
                     VStack(spacing: 8) {
-                        Button(busy ? "静候…" : isIncense ? (offered ? "今日已上香" : "将香插入香炉") : (model.record.fortune == nil ? "静心抽签" : "收下今日签")) {
-                            if (isIncense && offered) || (!isIncense && model.record.fortune != nil) { dismiss() } else { begin() }
+                        Button(busy ? "静候…" : isIncense ? (offered ? "今日已上香" : "将香插入香炉") : (model.record.fortune == nil ? "静心抽签" : "再体验一次")) {
+                            if isIncense && offered { dismiss() }
+                            else if !isIncense && model.record.fortune != nil && !replay { replay = true; begin() }
+                            else { begin() }
                         }
                         .buttonStyle(.plain)
                         .frame(maxWidth: .infinity)
